@@ -6,14 +6,10 @@ export function openPopup(popup) {
 
 export function closePopup(popup) {
     popup.classList.remove('popup_is-opened');
-    popup.addEventListener('transitionend', function handler() {
-        popup.classList.remove('popup_is-animated');
-        popup.removeEventListener('transitionend', handler);
-    });
     document.removeEventListener('keydown', closePopupOnEsc);
 }
 
-export function closePopupOnEsc(event) {
+function closePopupOnEsc(event) {
     if (event.key === 'Escape') {
         const openedPopup = document.querySelector('.popup_is-opened');
         if (openedPopup) closePopup(openedPopup);

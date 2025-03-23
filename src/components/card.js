@@ -1,23 +1,9 @@
-import { openPopup } from './modal';
-
 export function handleLikeCard(evt) {
     evt.target.classList.toggle('card__like-button_is-active');
 }
 
 export function handleDeleteCard(cardElement) {
     cardElement.remove();
-}
-
-export function handlePreviewImg(link, name) {
-    const popupImage = document.querySelector('.popup_type_image');
-    const popupImagePic = popupImage.querySelector('.popup__image');
-    const popupImageCaption = popupImage.querySelector('.popup__caption');
-
-    popupImagePic.src = link;
-    popupImagePic.alt = name;
-    popupImageCaption.textContent = name;
-
-    openPopup(popupImage);
 }
 
 export function createCard(cardData, handleDeleteCard, handleLikeCard, handlePreviewImg) {

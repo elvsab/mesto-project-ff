@@ -1,5 +1,5 @@
 import { initialCards } from './scripts/cards';
-import { createCard, handleDeleteCard, handleLikeCard, handlePreviewImg } from './components/card';
+import { createCard, handleDeleteCard, handleLikeCard } from './components/card';
 import { openPopup, closePopup } from './components/modal';
 import './pages/index.css';
 import logo from './images/logo.svg';
@@ -9,6 +9,19 @@ const logoElement = document.querySelector('.header__logo');
 logoElement.src = logo;
 const profileImage = document.querySelector('.profile__image');
 profileImage.style.backgroundImage = `url(${avatar})`;
+
+const popupImage = document.querySelector('.popup_type_image');
+const popupImagePic = popupImage.querySelector('.popup__image');
+const popupImageCaption = popupImage.querySelector('.popup__caption');
+
+function handlePreviewImg(link, name) {
+    
+  popupImagePic.src = link;
+  popupImagePic.alt = name;
+  popupImageCaption.textContent = name;
+
+  openPopup(popupImage);
+}
 
 const placesList = document.querySelector('.places__list');
 
@@ -21,6 +34,7 @@ const popups = document.querySelectorAll('.popup');
 
 popups.forEach((popup) => {
   popup.addEventListener('click', (event) => {
+    popup.classList.add('popup_is-animated');
     if (
       event.target.classList.contains('popup') ||
       event.target.classList.contains('popup__close')
