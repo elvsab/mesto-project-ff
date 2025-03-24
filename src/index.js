@@ -33,8 +33,8 @@ initialCards.forEach((cardData) => {
 const popups = document.querySelectorAll('.popup');
 
 popups.forEach((popup) => {
+  popup.classList.add('popup_is-animated');
   popup.addEventListener('click', (event) => {
-    popup.classList.add('popup_is-animated');
     if (
       event.target.classList.contains('popup') ||
       event.target.classList.contains('popup__close')
