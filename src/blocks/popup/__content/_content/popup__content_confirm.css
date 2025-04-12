@@ -1,0 +1,7 @@
+.popup__content_confirm {
+    min-height: 181px;
+}
+
+.popup__content_confirm .popup__button {
+    margin-top: 28px;
+}
