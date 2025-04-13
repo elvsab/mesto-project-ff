@@ -1,4 +1,4 @@
-export function handleLikeCard(button, countEl, cardId, likeCard, unlikeCard) {
+export function handleLike(button, countEl, cardId, likeCard, unlikeCard) {
     const liked = button.classList.contains('card__like-button_is-active');
     const request = liked ? unlikeCard(cardId) : likeCard(cardId);
 
@@ -37,7 +37,7 @@ export function createCard(cardData, { handleDelete, handleLike, handlePreview, 
     }
 
     likeButton.addEventListener('click', () => {
-        handleLikeCard(likeButton, likeCount, cardData._id, likeCard, unlikeCard);
+        handleLike(likeButton, likeCount, cardData._id, likeCard, unlikeCard);
     });
     cardImage.addEventListener('click', () => {
         handlePreview(cardData.link, cardData.name);

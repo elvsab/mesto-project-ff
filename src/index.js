@@ -1,5 +1,5 @@
 import { getUserInfo, getInitialCards, addNewCard, updateUserProfile, updateUserAvatar, likeCard, unlikeCard, deleteCard } from './api.js';
-import { createCard } from './components/card';
+import { createCard, handleLike } from './components/card';
 import { openPopup, closePopup } from './components/modal';
 import './pages/index.css';
 import logo from './images/logo.svg';
@@ -202,18 +202,6 @@ confirmForm.addEventListener('submit', (evt) => {
 const renderLoading = (isLoading, buttonElement, defaultText = 'Сохранить') => {
   buttonElement.textContent = isLoading ? 'Сохранение...' : defaultText;
 };
-
-function handleLike(button, countEl, cardId) {
-  const liked = button.classList.contains('card__like-button_is-active');
-  const request = liked ? unlikeCard(cardId) : likeCard(cardId);
-
-  request
-    .then(updatedCard => {
-      button.classList.toggle('card__like-button_is-active');
-      countEl.textContent = updatedCard.likes.length;
-    })
-    .catch(console.error);
-}
 
 function handleDelete(cardEl, cardId) {
   cardToDelete = cardEl;
